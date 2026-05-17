@@ -66,15 +66,13 @@ void insert(Node* root, Node* node2) {
 
 void printTree(Node* root) {
     if (root->left) {
-        printNode(root->left);
-        printTree(root->left);
-    }
-    if (root->left) {
-        printNode(root->right);
         printTree(root->left);
     }
     if (root) {
         printNode(root);
+    }
+    if (root->right) {
+        printTree(root->left);
     }
 }
 
@@ -104,7 +102,7 @@ int main() {
     //printNode(node->right);
     //free(node);
     //free(node2);
-    
-    //printTree(node);
+    printf("\n start print\n\n");
+    printTree(node);
     return 0;
 }
