@@ -31,11 +31,80 @@ void printNode (Node* root) {
     }
     printf("]");
 }
+
+
+void insert(Node* root, Node* node2) {
+    Node* originalRoot = root;
+    printf("%d & %d\n",root->val,node2->val);
+    if (root) {
+        while (root->left || root->right) {
+        //printf("midprocessing:: ");
+        printNode(root);
+        if (root->val > node2->val) {
+            if (root->left) {
+                root = root->left;
+            } else {
+                break;
+            }
+        } else {
+            if (root->right) {
+                root = root->right;
+            } else {
+                break;
+            }
+        }
+    }
+    }
+    if (root->val > node2->val) {
+        root->left = node2;
+    } else {
+        root->right = node2;
+    }
+    root = originalRoot;
+}
+
+
+void printTree(Node* root) {
+    if (root->left) {
+        printNode(root->left);
+        printTree(root->left);
+    }
+    if (root->left) {
+        printNode(root->right);
+        printTree(root->left);
+    }
+    if (root) {
+        printNode(root);
+    }
+}
+
+
 int main() {
     int newNum;
     scanf("%d", &newNum);
     Node* node = newNode(newNum);
     printNode(node);
-    free(node);
+    
+    scanf("%d", &newNum);
+    Node* node2 = newNode(newNum);
+    insert(node,node2);
+    printNode(node);
+    printNode(node2);
+
+    scanf("%d", &newNum);
+    Node* node3 = newNode(newNum);
+    insert(node,node3);
+    printNode(node);
+    printNode(node2);
+    printNode(node3);
+
+    //printNode(node);
+
+    //printNode(node->left);
+    //printNode(node->right);
+    //free(node);
+    //free(node2);
+    
+    //printTree(node);
     return 0;
 }
