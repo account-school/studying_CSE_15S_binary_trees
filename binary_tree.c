@@ -65,17 +65,51 @@ void insert(Node* root, Node* node2) {
 
 
 void printTree(Node* root) {
-    if (root->left) {
-        printTree(root->left);
-    }
     if (root) {
-        printNode(root);
-    }
-    if (root->right) {
-        printTree(root->left);
+        //printNode(root);
+        if (root->left) {
+            printTree(root->left);
+        }
+        if (root) {
+            printNode(root);
+        }
+        if (root->right){
+            printTree(root->right);
+        }
     }
 }
 
+int traverseTree(Node* root, int value) {
+    Node* originalRoot = root;
+    if (root) {
+        while (root->left || root->right) {
+            if (root->val == value) {
+                return 1;
+            }
+            if (value > root->val) {
+                if (root->right) {
+                    root = root->right;
+                } else {
+                    break;
+                }
+            } else {
+                if (root->left) {
+                    root = root->left;
+                } else {
+                    break;
+                }
+            }
+        }
+
+    }
+
+    if (root->val == value) {
+        return 1;
+    }
+
+    root = originalRoot;
+    return 0;
+}
 
 int main() {
     int newNum;
@@ -104,5 +138,8 @@ int main() {
     //free(node2);
     printf("\n start print\n\n");
     printTree(node);
+    printf("\n\nNumber to search?:: ");
+    scanf("%d", &newNum);
+    printf("result: %d",traverseTree(node,newNum));
     return 0;
 }
