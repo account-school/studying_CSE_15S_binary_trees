@@ -130,6 +130,22 @@ int main() {
     printNode(node2);
     printNode(node3);
 
+    scanf("%d", &newNum);
+    Node* node4 = newNode(newNum);
+    insert(node,node4);
+    printNode(node);
+    printNode(node2);
+    printNode(node3);
+    printNode(node4);
+
+    scanf("%d", &newNum);
+    Node* node5 = newNode(newNum);
+    insert(node,node5);
+    printNode(node);
+    printNode(node2);
+    printNode(node3);
+    printNode(node4);
+    printNode(node5);
     //printNode(node);
 
     //printNode(node->left);
